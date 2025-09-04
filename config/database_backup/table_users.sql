@@ -28,3 +28,33 @@ VALUES (
 	'jddvies.4080@unicesmag.edu.co',
 	'1234'
 );
+
+INSERT INTO users(
+	firstname,
+	lastname,
+	mobile_number,
+	email,
+	password
+)
+VALUES (
+	'Juan',
+	'Perez',
+	'3005053191',
+	'juan.pejo.40@unicesmag.edu.co',
+	'1234'
+);
+
+INSERT INTO users(
+	firstname,
+	lastname,
+	mobile_number,
+	email,
+	password
+)
+VALUES (
+	'Daniel',
+	'Rojas',
+	'3004053192',
+	'dan.roja.80@unicesmag.edu.co',
+	'1234'
+);
