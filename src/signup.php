@@ -5,20 +5,24 @@
     $f_name = $_POST['fname'];
     $l_name = $_POST['lname'];
     $m_number = $_POST['mnumber'];
-    $id_number = $_POST['idnumber'];
+    $ide_number = $_POST['idenumber'];
     $e_mail = $_POST['email'];
     $p_wd = $_POST['passwd'];
+
+    $ec_pass = password_hash($p_wd, PASSWORD_BCRYPT);
+
     //create query to insert into
     $query = "
     INSERT INTO users (
         firstname,
         lastname,
         mobile_number, 
-        idnumber,
+        ide_number,
         email,
         password
+
     ) VALUES (
-        '$f_name', '$l_name', '$m_number', '$id_number', '$e_mail', '$p_wd'
+        '$f_name', '$l_name', '$m_number', '$ide_number', '$e_mail', '$ec_pass'
     )
     ";
     //execute query
