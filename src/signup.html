@@ -8,26 +8,28 @@
 </head>
 <body>
     <center><h1>Register Form</h1></center>
-    <table align="center">
-        <tr><td><label>Firstname:</label></td></tr>
-        <tr><td><input type="text" placeholder="Firstname"></td></tr>
-        <tr><td><label>Lastname:</label></td></tr>
-        <tr><td><input type="text" placeholder="Lastname"></td></tr>
-        <tr><td><label>Mobile phone:</label></td></tr>
-        <tr><td><input type="text" placeholder="Mobile phone"></td></tr>
-        <tr><td><label>Identification number:</label></td></tr>
-        <tr><td><input type="text" placeholder="Identification number"></td></tr>
-        <tr><td><label>E-mail:</label></td></tr>
-        <tr><td><input type="text" placeholder="E-mail"></td></tr>
-        <tr><td><label>Password:</label></td></tr>
-        <tr><td><input type="text" placeholder="Password"><br></td></tr>
-        <tr><td><center><button style="background-color: rgb(240, 121, 119); margin-top: 1ex; margin-bottom: 1ex;">Register</button></center></td></tr>
-        <tr><td style="text-align: center;">
-            <img src="icons/google.png" alt="Google Icon" width="24" height="24" style="margin-right: 8px;">
-            <img src="icons/facebook.png" alt="Facebook Icon" width="24" height="24" style="margin-right: 8px;">
-            <img src="icons/github.png" alt="GitHub Icon" width="24" height="24">
-        </td></tr>
-        <tr><td><center><a href="src/signin.html" style="color:royalblue; text-decoration: underline;">I already have an account</a></center></td></tr>
-    </table>  
+    <form name="register-form" action="signup.php" method="post">
+        <table align="center">
+            <tr><td><label>Firstname:</label></td></tr>
+            <tr><td><input type="text" name="fname" placeholder="Firstname" required></td></tr>
+            <tr><td><label>Lastname:</label></td></tr>
+            <tr><td><input type="text" name="lname" placeholder="Lastname" required></td></tr>
+            <tr><td><label>Mobile phone:</label></td></tr>
+            <tr><td><input type="text" name="mnumber" placeholder="Mobile phone" required></td></tr>
+            <tr><td><label>Identification number:</label></td></tr>
+            <tr><td><input type="text" name="idenumber" placeholder="Identification number" required></td></tr>
+            <tr><td><label>Email:</label></td></tr>
+            <tr><td><input type="email" name="email" placeholder="Email" required></td></tr>
+            <tr><td><label>Password:</label></td></tr>
+            <tr><td><input type="password" name="passwd" placeholder="Password" required><br></td></tr>
+            <tr><td><center><button style="background-color: rgb(240, 121, 119); margin-top: 1ex; margin-bottom: 1ex;">Register</button></center></td></tr>
+            <tr><td style="text-align: center;">
+                <img src="icons/google.png" alt="Google Icon" width="24" height="24" style="margin-right: 8px;">
+                <img src="icons/facebook.png" alt="Facebook Icon" width="24" height="24" style="margin-right: 8px;">
+                <img src="icons/github.png" alt="GitHub Icon" width="24" height="24">
+            </td></tr>
+            <tr><td><center><a href="src/signin.html" style="color:royalblue; text-decoration: underline;">I already have an account</a></center></td></tr>
+        </table>
+    </form>
 </body>
 </html>
