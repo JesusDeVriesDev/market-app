@@ -14,11 +14,11 @@
     $check_email = "
         SELECT
             u.email
-        FROM
+        FROM    
             users u
         WHERE
             email = '$e_mail' or ide_number = '$ide_number'
-        LIMIT 1
+            LIMIT 1
     ";
 
     $res_check = pg_query($conn, $check_email);
@@ -37,7 +37,7 @@
             password
 
         ) VALUES (
-            '$f_name', '$l_name', '$m_number', '$ide_number', '$e_mail', '$ec_pass'
+            '$f_name', '$l_name', '$m_number', '$ide_number', '$e_mail', '$p_wd'
         )
         ";
         //execute query
