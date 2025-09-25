@@ -9,7 +9,8 @@
     $e_mail = $_POST['email'];
     $p_wd = $_POST['passwd'];
 
-    $ec_pass = password_hash($p_wd, PASSWORD_DEFAULT);
+    //$enc_pass = password_hash($p_wd, PASSWORD_DEFAULT);
+    $enc_pass = md5($p_wd);
 
     $check_email = "
         SELECT
@@ -37,7 +38,7 @@
             password
 
         ) VALUES (
-            '$f_name', '$l_name', '$m_number', '$ide_number', '$e_mail', '$p_wd'
+            '$f_name', '$l_name', '$m_number', '$ide_number', '$e_mail', '$enc_pass'
         )
         ";
         //execute query
