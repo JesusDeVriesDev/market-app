@@ -2,12 +2,12 @@
     //get database acces
     require('../config/database.php');
     //get form data
-    $f_name = $_POST['fname'];
-    $l_name = $_POST['lname'];
-    $m_number = $_POST['mnumber'];
-    $ide_number = $_POST['idenumber'];
-    $e_mail = $_POST['email'];
-    $p_wd = $_POST['passwd'];
+    $f_name = trim($_POST['fname']);
+    $l_name = trim($_POST['lname']);
+    $m_number = trim($_POST['mnumber']);
+    $ide_number = trim($_POST['idenumber']);
+    $e_mail = trim($_POST['email']);
+    $p_wd = trim($_POST['passwd']);
 
     //$enc_pass = password_hash($p_wd, PASSWORD_DEFAULT);
     $enc_pass = md5($p_wd);
