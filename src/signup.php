@@ -22,7 +22,7 @@
             LIMIT 1
     ";
 
-    $res_check = pg_query($conn, $check_email);
+    $res_check = pg_query($conn_supa, $check_email);
     if (pg_num_rows($res_check) > 0) {
         echo "<script>alert('User already exists !!')</script>";
         header('refresh:0;url=signup.html');
@@ -42,7 +42,7 @@
         )
         ";
         //execute query
-        $res = pg_query($conn, $query);
+        $res = pg_query($conn_supa, $query);
         //validate result
         if($res){
             //echo "Users has been created sucessfully!!!";
