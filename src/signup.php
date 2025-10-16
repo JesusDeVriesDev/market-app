@@ -1,55 +1,63 @@
 <?php
-    //get database acces
     require('../config/database.php');
-    //get form data
-    $f_name = trim($_POST['fname']);
-    $l_name = trim($_POST['lname']);
-    $m_number = trim($_POST['mnumber']);
-    $ide_number = trim($_POST['idenumber']);
-    $e_mail = trim($_POST['email']);
-    $p_wd = trim($_POST['passwd']);
-
-    //$enc_pass = password_hash($p_wd, PASSWORD_DEFAULT);
-    $enc_pass = md5($p_wd);
-
-    $check_email = "
-        SELECT
-            u.email
-        FROM    
-            users u
-        WHERE
-            email = '$e_mail' or ide_number = '$ide_number'
-            LIMIT 1
+    $query = "
+    SELECT id, name FROM cities WHERE status = true
     ";
-
-    $res_check = pg_query($conn_supa, $check_email);
-    if (pg_num_rows($res_check) > 0) {
-        echo "<script>alert('User already exists !!')</script>";
-        header('refresh:0;url=signup.html');
-    } else {
-        //create query to insert into
-        $query = "
-        INSERT INTO users (
-            firstname,
-            lastname,
-            mobile_number, 
-            ide_number,
-            email,
-            password
-
-        ) VALUES (
-            '$f_name', '$l_name', '$m_number', '$ide_number', '$e_mail', '$enc_pass'
-        )
-        ";
-        //execute query
-        $res = pg_query($conn_supa, $query);
-        //validate result
-        if($res){
-            //echo "Users has been created sucessfully!!!";
-            echo "<script>alert('Sucess !!! Go to login')</script>";
-            header('refresh:0;url=signin.html');
-        } else {
-            echo "Something wrong!";
-        }
-    }
+    $query2 = "
+    SELECT id, name FROM cities WHERE status = true
+    ";
+$cities = pg_query($conn_supa, $query);
+$cities2 = pg_query($conn_supa, $query2);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market - Register</title>
+    <link rel="icon" href="icons/carro-de-la-compra.png" type="image/png">
+</head>
+<body>
+    <center><h1>Register Form</h1></center>
+    <form name="register-form" action="signup1.php" method="post">
+        <table align="center">
+            <tr><td><label>Firstname:</label></td></tr>
+            <tr><td><input type="text" name="fname" placeholder="Firstname" required></td></tr>
+            <tr><td><label>Lastname:</label></td></tr>
+            <tr><td><input type="text" name="lname" placeholder="Lastname" required></td></tr>
+            <tr><td><label>Mobile phone:</label></td></tr>
+            <tr><td><input type="text" name="mnumber" placeholder="Mobile phone" required></td></tr>
+            <tr><td><label>Identification number:</label></td></tr>
+            <tr><td><input type="text" name="idenumber" placeholder="Identification number" required></td></tr>
+            <tr><td><label>Email:</label></td></tr>
+            <tr><td><input type="email" name="email" placeholder="Email" required></td></tr>
+            <tr><td><label>Password:</label></td></tr>
+            <tr><td><input type="password" name="passwd" placeholder="Password" required><br></td></tr>
+            <tr><td><label>Birth city:</label></td></tr>
+            <tr><td>
+                <select name="id" required>
+                    <?php while ($row = pg_fetch_assoc($cities)): ?>
+                        <option value="<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['name']); ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </td></tr>
+            <tr><td><label>City document:</label></td></tr>
+            <tr><td>
+                <select name="id" required>
+                    <?php while ($row = pg_fetch_assoc($cities2)): ?>
+                        <option value="<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['name']); ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </td></tr>
+            <tr><td><center><button style="background-color: rgb(240, 121, 119); margin-top: 1ex; margin-bottom: 1ex;">Register</button></center></td></tr>
+            <tr><td style="text-align: center;">
+                <img src="icons/google.png" alt="Google Icon" width="24" height="24" style="margin-right: 8px;">
+                <img src="icons/facebook.png" alt="Facebook Icon" width="24" height="24" style="margin-right: 8px;">
+                <img src="icons/github.png" alt="GitHub Icon" width="24" height="24">
+            </td></tr>
+            <tr><td><center><a href="signin.html" style="color:royalblue; text-decoration: underline;">I already have an account</a></center></td></tr>
+        </table>
+    </form>
+</body>
+</html>
