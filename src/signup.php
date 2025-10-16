@@ -26,7 +26,9 @@ $cities2 = pg_query($conn_supa, $query2);
             <tr><td><input type="text" name="fname" placeholder="Firstname" required></td></tr>
             <tr><td><label>Lastname:</label></td></tr>
             <tr><td><input type="text" name="lname" placeholder="Lastname" required></td></tr>
-            <tr><td><label>Mobile phone:</label></td></tr>
+            <tr><td><label>Adress:</label></td></tr>
+            <tr><td><input type="text" name="adress" placeholder="Adress" required></td></tr>
+            <tr><td><label>Mobile number:</label></td></tr>
             <tr><td><input type="text" name="mnumber" placeholder="Mobile phone" required></td></tr>
             <tr><td><label>Identification number:</label></td></tr>
             <tr><td><input type="text" name="idenumber" placeholder="Identification number" required></td></tr>

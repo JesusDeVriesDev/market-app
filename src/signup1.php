@@ -35,6 +35,7 @@
         INSERT INTO users (
             firstname,
             lastname,
+            adress,
             mobile_number, 
             ide_number,
             email,
@@ -42,7 +43,7 @@
             id_city_birthday,
             id_city_document
         ) VALUES (
-            '$f_name', '$l_name', '$m_number', '$ide_number', '$e_mail', '$enc_pass', $id_city_birthday, $id_city_document
+            '$f_name', '$l_name', '$m_number', '$adress', '$ide_number', '$e_mail', '$enc_pass', $id_city_birthday, $id_city_document
         )
         ";
         //execute query

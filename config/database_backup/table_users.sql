@@ -9,7 +9,7 @@ CREATE TABLE users(
 	email VARCHAR(200) NOT NULL UNIQUE,
 	password TEXT NOT NULL,
 	id_city_birthday BIGINT REFERENCES cities(id),
-    id_city_document BIGINT REFERENCES cities(id),
+    id_city_document BIGINT REFERENCES cities(id),	
 	status BOOLEAN NOT NULL DEFAULT TRUE,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
