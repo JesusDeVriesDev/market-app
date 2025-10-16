@@ -14,47 +14,39 @@ CREATE TABLE users(
 	delete_at TIMESTAMPTZ NULL
 );
 
-INSERT INTO users(
-	firstname,
-	lastname,
-	mobile_number,
-	email,
-	password
-)
-VALUES (
-	'Jesus',
-	'De Vries',
-	'3024445935',
-	'jddvies.4080@unicesmag.edu.co',
-	'1234'
+CREATE TABLE countries (
+  	id BIGSERIAL PRIMARY KEY,
+  	name VARCHAR(100) NOT NULL,
+  	abbrev VARCHAR(10),
+  	code VARCHAR(10),
+  	status BOOLEAN NOT NULL DEFAULT TRUE,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	delete_at TIMESTAMPTZ NULL
 );
 
-INSERT INTO users(
-	firstname,
-	lastname,
-	mobile_number,
-	email,
-	password
-)
-VALUES (
-	'Juan',
-	'Perez',
-	'3005053191',
-	'juan.pejo.40@unicesmag.edu.co',
-	'1234'
+CREATE TABLE regions (
+  	id BIGSERIAL PRIMARY KEY,
+  	name VARCHAR(100) NOT NULL,
+	abbrev VARCHAR(10),
+	code VARCHAR(10),
+  	country_id INT NOT NULL,
+  	status BOOLEAN NOT NULL DEFAULT TRUE,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	delete_at TIMESTAMPTZ NULL,
+  	FOREIGN KEY (country_id) REFERENCES countries(id)
 );
 
-INSERT INTO users(
-	firstname,
-	lastname,
-	mobile_number,
-	email,
-	password
-)
-VALUES (
-	'Daniel',
-	'Rojas',
-	'3004053192',
-	'dan.roja.80@unicesmag.edu.co',
-	'1234'
+CREATE TABLE cities (
+  	id BIGSERIAL PRIMARY KEY,
+  	name VARCHAR(100) NOT NULL,
+	abbrev VARCHAR(10),
+	code VARCHAR(10),
+  	region_id INT NOT NULL,
+  	status BOOLEAN NOT NULL DEFAULT TRUE,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	delete_at TIMESTAMPTZ NULL,
+  	FOREIGN KEY (region_id) REFERENCES regions(id)
 );
