@@ -38,7 +38,7 @@ $cities2 = pg_query($conn_supa, $query2);
             <tr><td><input type="password" name="passwd" placeholder="Password" required><br></td></tr>
             <tr><td><label>Birth city:</label></td></tr>
             <tr><td>
-                <select name="id" required>
+                <select name="id_city_birthday" required>
                     <?php while ($row = pg_fetch_assoc($cities)): ?>
                         <option value="<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['name']); ?></option>
                     <?php endwhile; ?>
@@ -46,7 +46,7 @@ $cities2 = pg_query($conn_supa, $query2);
             </td></tr>
             <tr><td><label>City document:</label></td></tr>
             <tr><td>
-                <select name="id" required>
+                <select name="id_city_document" required>
                     <?php while ($row = pg_fetch_assoc($cities2)): ?>
                         <option value="<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['name']); ?></option>
                     <?php endwhile; ?>
