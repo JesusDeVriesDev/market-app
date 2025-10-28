@@ -1,5 +1,5 @@
 <?php
-//Step 1: get database acces
+//Step 1: Get database access
 require('../config/database.php')
 ?>
 
@@ -9,51 +9,66 @@ require('../config/database.php')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketapp - List users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
 </head>
 <body>
-    <table border = "2" align = "center">
-        <tr>
-            <th>Fullname</th>
-            <th>E-mail</th>
-            <th>Ide number</th>
-            <th>phone number</th>
-            <th>status</th>
-            <th>options</th>
-        </tr>
-        <?php 
-            $sql_users = 
-            "select 
-	            u.firstname ||' '|| u.lastname as fullname,
-	            u.email,
-	            u.id_number,
-	            u.mobile_number,
-	            case when u.status = true then 'Active' else 'Inactive'
-	            end as status
-            from users u";
+<div class="container mt-3">
+    <table align = "center" class="table table-bordered table-sm table-striped">
+        <thead align = "center" class="table-dark">
+            <tr>
+                <th>Full name</th>
+                <th>E-mail</th>
+                <th>Identification number</th>
+                <th>Phone number</th>
+                <th>Status</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody align = "center">
+            <?php 
+                $sql_users = 
+                "select 
+                    u.id as user_id,
+                    u.firstname ||' '|| u.lastname as fullname,
+                    u.email,
+                    u.ide_number,
+                    u.mobile_number,
+                    case when u.status = true then 'Active' else 'Inactive'
+                    end as status
+                from users u";
 
-            $result =pg_query($conn_local, $sql_users);
-            if(!$result){
-                die("error". pg_last_error());
-            }
+                $result =pg_query($conn_local, $sql_users);
+                if(!$result){
+                    die("Error: ". pg_last_error());
+                }
 
-            while ($row = pg_fetch_assoc($result)){
-                echo "<tr>
-                        <td> ".$row['fullname']."</td>
-                        <td>".$row['email']."</td>
-                        <td>".$row['id_number']."</td>
-                        <td>".$row['mobile_number']."</td>
-                        <td>".$row['status']."</td>
-                        <td>
-                        <a haref ='#'>
-                            <img src = 'icons/search.png' width='20'>
-                        </a>
+                while ($row = pg_fetch_assoc($result)){
+                    $status_class = ($row['status'] == 'Active') ? 'table-success' : 'table-danger';
+                    echo "<tr>
+                            <td> ".$row['fullname']."</td>
+                            <td>".$row['email']."</td>
+                            <td>".$row['ide_number']."</td>
+                            <td>".$row['mobile_number']."</td>
+                            <td class='{$status_class}'>".$row['status']."</td>
+                            <td>
+                            <a href ='#'>
+                                <img src = 'icons/search.png' width='15'>
+                            </a>
+                            <a href='#'>
+                                <img src='icons/refresh.png' width='15'>
+                            </a>
+                            <a href='delete_user.php?userId=". $row['user_id'] ."'>
+                                <img src='icons/delete.png' width='15'>
+                            </a>
                         </td>
-                        </tr>";
+                    </tr>";
 
-            }
-        ?>
-
-        </table>
-        
+                }
+            ?>
+        </tbody>
+    </table> 
+</div>   
 </body>
 </html>
