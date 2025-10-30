@@ -56,7 +56,7 @@ require('../config/database.php')
                             <a href ='#'>
                                 <img src = 'icons/search.png' width='15'>
                             </a>
-                            <a href='#'>
+                            <a href='edit_user_form.php?userId=". $row['user_id'] ."'>
                                 <img src='icons/refresh.png' width='15'>
                             </a>
                             <a href='delete_user.php?userId=". $row['user_id'] ."'>
