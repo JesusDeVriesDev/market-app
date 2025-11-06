@@ -1,6 +1,12 @@
 <?php
-//Step 1: Get database access
-require('../config/database.php')
+    //Step 1: Get database access
+    require('../config/database.php');
+
+    session_start();
+
+    if (!isset($_SESSION['session_user_id']) ) {
+        header("refresh:0;url=error_403.html");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +17,6 @@ require('../config/database.php')
     <title>Marketapp - List users</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
 </head>
 <body>
 <div class="container mt-3">
