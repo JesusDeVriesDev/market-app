@@ -7,6 +7,8 @@
     //Start or create session NO SIRVE
     if (isset($_SESSION['session_user_id'])) {
         header("refresh:0;url=main.php");
+    } else {
+        header("refresh:0;url=error_403.html");
     }
 
     //Step 2. Get form-data

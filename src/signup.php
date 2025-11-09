@@ -6,8 +6,8 @@
     $query2 = "
     SELECT id, name FROM cities WHERE status = true
     ";
-$cities = pg_query($conn_supa, $query);
-$cities2 = pg_query($conn_supa, $query2);
+$cities = pg_query($conn_local, $query);
+$cities2 = pg_query($conn_local, $query2);
 ?>
 
 <!DOCTYPE html>
@@ -54,9 +54,9 @@ $cities2 = pg_query($conn_supa, $query2);
             </td></tr>
             <tr><td><center><button style="background-color: rgb(240, 121, 119); margin-top: 1ex; margin-bottom: 1ex;">Register</button></center></td></tr>
             <tr><td style="text-align: center;">
-                <img src="icons/google.png" alt="Google Icon" width="24" height="24" style="margin-right: 8px;">
-                <img src="icons/facebook.png" alt="Facebook Icon" width="24" height="24" style="margin-right: 8px;">
-                <img src="icons/github.png" alt="GitHub Icon" width="24" height="24">
+                <img src="icons/google.png" name="photo" alt="Google Icon" width="24" height="24" style="margin-right: 8px;">
+                <img src="icons/facebook.png" name="photo" alt="Facebook Icon" width="24" height="24" style="margin-right: 8px;">
+                <img src="icons/github.png" name="photo" alt="GitHub Icon" width="24" height="24">
             </td></tr>
             <tr><td><center><a href="signin.html" style="color:royalblue; text-decoration: underline;">I already have an account</a></center></td></tr>
         </table>

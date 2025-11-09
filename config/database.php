@@ -35,7 +35,5 @@
 
     if(!$conn_supa) {
         echo "ERROR: ".pg_last_error();
-    } else {
-        echo "CONNECTION SUCCESSFULLY :::";
     }
 ?>
