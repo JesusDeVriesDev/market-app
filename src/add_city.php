@@ -14,6 +14,7 @@ $regions = pg_query($conn_supa, $query);
     <title>Market - Add Region</title>
     <link rel="icon" href="icons/map.png" type="image/png">
 </head>
+
 <body>
     <center><h1>Add City</h1></center>
     <form action="add_city1.php" method="post">
